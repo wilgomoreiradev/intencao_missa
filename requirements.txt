@@ -1,0 +1,4 @@
+Flask
+python-dotenv
+requests
+sib-api-v3-sdk

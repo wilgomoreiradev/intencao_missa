@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.pyc
+
+# Ambiente virtual
+venv/
+env/
+
+# Configuração
+.env
+
+# Outros
+interessados.csv

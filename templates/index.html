@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamento de Missas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #fffaf5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .banner {
+      text-align: center;
+      background-color: #f0f0f0;
+    }
+
+    .banner img {
+      width: 100%;
+      max-width: 1000px;
+      height: auto;
+      border-bottom: 4px solid #8B0000;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 2em auto;
+      padding: 2em;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.08);
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 1em;
+      margin-bottom: 1em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+
+    form button {
+      background-color: #8B0000;
+      color: #fff;
+      padding: 0.75em 2em;
+      border: none;
+      border-radius: 30px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #a30000;
+    }
+
+    .flash {
+      color: #2e7d32;
+      background-color: #e8f5e9;
+      padding: 10px;
+      text-align: center;
+      border-radius: 5px;
+      margin-bottom: 1em;
+    }
+
+    h1 {
+      text-align: center;
+      color: #8B0000;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Banner -->
+  <div class="banner">
+    <img src="{{ url_for('static', filename='mass-intencao-banner.png') }}" alt="Banner Missa">
+  </div>
+
+  <!-- Conteúdo -->
+  <div class="container">
+    <h1>Agende Intenções de Missa</h1>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash">{{ messages[0] }}</div>
+      {% endif %}
+    {% endwith %}
+
+    <p>Preencha o formulário abaixo para participar do teste gratuito do sistema de agendamento de intenções de missa.</p>
+
+    <form method="POST">
+      <input type="text" name="nome" placeholder="Nome da paróquia" required>
+      <input type="email" name="email" placeholder="E-mail" required>
+      <input type="tel" name="whatsapp" id="whatsapp" placeholder="Whatsapp (ex: 79 99999-9999)" required>
+      <button type="submit">Quero participar</button>
+    </form>
+    
+    <script>
+      document.getElementById('whatsapp').addEventListener('input', function (e) {
+        let input = e.target.value.replace(/\D/g, ''); // remove tudo que não for número
+        input = input.slice(0, 11); // limita a 11 dígitos (2 DDD + 9 número)
+    
+        let formatted = input;
+        if (input.length >= 2) {
+          formatted = input.slice(0, 2) + ' ' + input.slice(2);
+        }
+        if (input.length >= 7) {
+          formatted = formatted.slice(0, 8) + '-' + formatted.slice(8);
+        }
+        e.target.value = formatted;
+      });
+    </script>
+  </div>
+
+</body>
+</html>
