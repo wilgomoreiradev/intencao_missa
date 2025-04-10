@@ -3,7 +3,6 @@ import csv
 import requests
 from notificacoes import enviar_email
 
-# URL do seu Google Apps Script publicado
 GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbz_A5r6U-ywRxk122yc_t13xXrIv_Xz45bA1HfO_4mT2cOJKO0NnhRMMgcou2cM8C4/exec'
 
 app = Flask(__name__)
