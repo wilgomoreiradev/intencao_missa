@@ -3,7 +3,8 @@ import csv
 import requests
 from notificacoes import enviar_email
 
-GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbz_A5r6U-ywRxk122yc_t13xXrIv_Xz45bA1HfO_4mT2cOJKO0NnhRMMgcou2cM8C4/exec'
+GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwTW92LG6p8y2DS_VO1NlOd3a8IrwTPNyXtR-gncm8orNFrnCk3fwcjJYpQdGJJb0Xa/exec'
+
 
 app = Flask(__name__)
 app.secret_key = 'chave-secreta'  # Necessário para mensagens flash
