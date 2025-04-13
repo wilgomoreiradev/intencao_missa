@@ -5,7 +5,6 @@ from notificacoes import enviar_email
 
 GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwTW92LG6p8y2DS_VO1NlOd3a8IrwTPNyXtR-gncm8orNFrnCk3fwcjJYpQdGJJb0Xa/exec'
 
-
 app = Flask(__name__)
 app.secret_key = 'chave-secreta'  # Necessário para mensagens flash
 
@@ -31,6 +30,8 @@ def home():
         }
         try:
             response = requests.post(GOOGLE_SHEET_URL, data=payload)
+            print("Status:", response.status_code)
+            print("Resposta:", response.text)  
             if response.status_code == 200:
                 flash("Mensagem enviada com sucesso!")
             else:
