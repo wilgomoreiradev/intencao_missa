@@ -14,17 +14,19 @@ def home():
         nome = request.form.get("nome")
         email = request.form.get("email")
         whatsapp = request.form.get("whatsapp")
+        sugestao = request.form.get("sugestao")
 
         # Salvar localmente no CSV
         with open("interessados.csv", "a", newline='', encoding='utf-8') as file:
             writer = csv.writer(file)
-            writer.writerow([nome, email, whatsapp])
+            writer.writerow([nome, email, whatsapp, sugestao])
 
         # Enviar para Google Sheets
         payload = {
             "nome": nome,
             "email": email,
-            "whatsapp": whatsapp
+            "whatsapp": whatsapp,
+            "sugestao": sugestao
         }
         try:
             response = requests.post(GOOGLE_SHEET_URL, data=payload)

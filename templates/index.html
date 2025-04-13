@@ -71,6 +71,15 @@
       color: #8B0000;
     }
   </style>
+
+  <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3GQC0YM6PB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3GQC0YM6PB');
+</script>
 </head>
 <body>
 
@@ -95,6 +104,7 @@
       <input type="text" name="nome" placeholder="Nome da paróquia" required>
       <input type="email" name="email" placeholder="E-mail" required>
       <input type="tel" name="whatsapp" id="whatsapp" placeholder="Whatsapp (ex: 79 99999-9999)" required>
+      <textarea name="sugestao" rows="4" placeholder="O que você gostaria que tivesse para facilitar a vida na paróquia? (opcional)"></textarea>
       <button type="submit">Quero participar</button>
     </form>
     
